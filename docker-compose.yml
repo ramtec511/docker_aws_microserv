@@ -10,8 +10,6 @@ services:
         links: 
             - mongo
             - redis
-        volumes:
-            - ./loginylogout:/usr/src/appuno
     carganew:
         container_name: newdoc
         restart: always
@@ -20,8 +18,6 @@ services:
             - 4000:3010
         links: 
             - mongo
-        volumes:
-            - ./carganewdoc:/usr/src/appdos
     leerdoc:
         container_name: readdoc
         restart: always
@@ -30,8 +26,6 @@ services:
             - 4010:3030
         links: 
             - mongo
-        volumes:
-            - ./leerdoc:/usr/src/apptres
     editdoc:
         container_name: editadoc
         restart: always
@@ -40,8 +34,6 @@ services:
             - 4050:3050
         links: 
             - mongo
-        volumes:
-            - ./ediciondoc:/usr/src/appcuatro
     redis:
         container_name: elredis
         image: redis
