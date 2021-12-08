@@ -1,0 +1,58 @@
+version: '3.9'
+
+services:
+    ellogin:
+        container_name: loginout
+        restart: always
+        build: ./loginylogout
+        ports:
+            - 5000:3000
+        links: 
+            - mongo
+            - redis
+        volumes:
+            - ./loginylogout:/usr/src/appuno
+    carganew:
+        container_name: newdoc
+        restart: always
+        build: ./carganewdoc
+        ports:
+            - 4000:3010
+        links: 
+            - mongo
+        volumes:
+            - ./carganewdoc:/usr/src/appdos
+    leerdoc:
+        container_name: readdoc
+        restart: always
+        build: ./leerdoc
+        ports:
+            - 4010:3030
+        links: 
+            - mongo
+        volumes:
+            - ./leerdoc:/usr/src/apptres
+    editdoc:
+        container_name: editadoc
+        restart: always
+        build: ./ediciondoc
+        ports:
+            - 4050:3050
+        links: 
+            - mongo
+        volumes:
+            - ./ediciondoc:/usr/src/appcuatro
+    redis:
+        container_name: elredis
+        image: redis
+        ports: 
+            - 6379:6379
+        volumes:
+          - ./la_cache:/data
+    mongo:
+        container_name: mymongodatabase
+        image: mongo
+        ports:
+            - 27018:27017 
+        volumes:
+            - ./los_mongo:/data/db        
